@@ -1,9 +1,9 @@
 <div class="order-page-body">
   <label class="main"
     >All Orders
-    <input  type="checkbox" />
+    <input  type="checkbox" [(ngModel)]="masterSelected" (change)="checkUncheckAll()" />
     <span id="check-all-checkbox" class="checkmark"></span>
-    <span class="no-of-orders-selected">(2 orders Selected)</span>
+    <span class="no-of-orders-selected">({{noOfChecked}} orders Selected)</span>
   </label>
 
   <table class="custom-table">
@@ -21,7 +21,7 @@
       <tr *ngFor="let order of ordersData | searchFilter: searchText">
         <td class="checkbox-column">
           <label class="main">
-            <input type="checkbox" />
+            <input type="checkbox" [(ngModel)]="order.isSelected" (change)="isAllSelected(order.refId, $event)"/>
             <span class="checkmark"></span>
           </label>
         </td>

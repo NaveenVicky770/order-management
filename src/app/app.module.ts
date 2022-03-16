@@ -7,6 +7,8 @@ import { OrderHeaderComponent } from './order-header/order-header.component';
 import { OrderBodyTableComponent } from './order-body-table/order-body-table.component';
 import { TableRowComponent } from './order-body-table/table-row/table-row.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

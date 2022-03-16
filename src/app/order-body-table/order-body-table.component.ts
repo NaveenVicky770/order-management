@@ -12,6 +12,7 @@ type order = {
   distribution: string;
   status: string;
   price: string;
+  isSelected: boolean;
 };
 
 @Component({
@@ -27,20 +28,31 @@ export class OrderBodyTableComponent implements OnInit {
   messages: any[] = [];
   subscription: Subscription;
 
+  masterSelected: boolean;
+  checklist: any;
+  checkedList: any;
+  noOfChecked=0;
+
   constructor(private dataComService: DataCommuniationServiceService) {
     this.ordersData = data;
     console.log(this.ordersData);
 
-    this.subscription = this.dataComService.getMessage().subscribe(message => {
-      if (message) {
-        this.messages.push(message);
-        console.log(this.messages)
-        this.searchText = message.text
-      } else {
-        // clear messages when empty message received
-        this.messages = [];
-      }
-    });
+    this.subscription = this.dataComService
+      .getMessage()
+      .subscribe((message) => {
+        if (message) {
+          this.messages.push(message);
+          console.log(this.messages);
+          this.searchText = message.text;
+        } else {
+          // clear messages when empty message received
+          this.messages = [];
+        }
+      });
+
+    this.masterSelected = false;
+    this.checklist = data;
+    this.getCheckedItemList();
   }
 
   ngOnInit(): void {
@@ -50,5 +62,45 @@ export class OrderBodyTableComponent implements OnInit {
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
-}
+  }
+
+  // The master checkbox will check/ uncheck all items
+  checkUncheckAll() {
+    for (var i = 0; i < this.ordersData.length; i++) {
+      this.ordersData[i].isSelected = this.masterSelected;
+    }
+    this.masterSelected === true? this.noOfChecked=this.ordersData.length: this.noOfChecked=0;
+    this.getCheckedItemList();
+  }
+
+  //Check Only one or More
+  checkUncheckOneOrMore(refId: any, checked: boolean){
+    console.log(refId)
+    checked ? this.noOfChecked+=1: this.noOfChecked-=1;
+  }
+
+  // Check All Checkbox Checked
+  isAllSelected(refId:any, event:any) {
+    console.log(event.target.checked)
+    let checked=(event.target.checked)
+    this.masterSelected = this.checklist.every(function (item: any) {
+      return item.isSelected == true;
+    });
+    if(this.masterSelected==false && this.ordersData.length==this.noOfChecked){
+      this.noOfChecked-=1
+    }else{
+      this.checkUncheckOneOrMore(refId,checked)
+    }
+    this.getCheckedItemList();
+  }
+
+  // Get List of Checked Items
+  getCheckedItemList() {
+    this.checkedList = [];
+    for (var i = 0; i < this.checklist.length; i++) {
+      if (this.checklist[i].isSelected)
+        this.checkedList.push(this.checklist[i]);
+    }
+    this.checkedList = JSON.stringify(this.checkedList);
+  }
 }

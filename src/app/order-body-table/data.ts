@@ -6,7 +6,8 @@ const ordersData = [
     date: '08 Aug 2020',
     distribution: 'Bangalore',
     status: 'In transit',
-    price: 'Rs 800.00/-'
+    price: 'Rs 800.00/-',
+    isSelected: false
   },
   {
     refId: '455',
@@ -15,7 +16,8 @@ const ordersData = [
     date: '06 Aug 2020',
     distribution: 'Hyderabad',
     status: 'In transit',
-    price: 'Rs. 900.00/-'
+    price: 'Rs. 900.00/-',
+    isSelected: false
   },
   {
     refId: '121',
@@ -24,7 +26,8 @@ const ordersData = [
     date: '12 Aug 2020',
     distribution: 'Patna',
     status: 'Out for Delivery',
-    price: 'Rs 300.00/-'
+    price: 'Rs 300.00/-',
+    isSelected: false
   },
   {
     refId: '424',
@@ -33,7 +36,8 @@ const ordersData = [
     date: '07 Aug 2020',
     distribution: 'Bangalore',
     status: 'In transit',
-    price: 'Rs 1100.00/-'
+    price: 'Rs 1100.00/-',
+    isSelected: false
   },
   {
     refId: '877',
@@ -42,7 +46,8 @@ const ordersData = [
     date: '12 Sept 2020',
     distribution: 'Hyderabad',
     status: 'Placed',
-    price: 'Rs 600.00/-'
+    price: 'Rs 600.00/-',
+    isSelected: false
   },
   {
     refId: '235',
@@ -51,7 +56,8 @@ const ordersData = [
     date: '31 July 2020',
     distribution: 'Patna',
     status: 'Delivered',
-    price: 'Rs 1250.00/-'
+    price: 'Rs 1250.00/-',
+    isSelected: false
   },
   {
     refId: '837',
@@ -60,7 +66,8 @@ const ordersData = [
     date: '08 Aug 2020',
     distribution: 'Bangalore',
     status: 'Out for Delivery',
-    price: 'Rs 850.00/-'
+    price: 'Rs 850.00/-',
+    isSelected: false
   },
 ];
 
