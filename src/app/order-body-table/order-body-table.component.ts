@@ -27,6 +27,7 @@ export class OrderBodyTableComponent implements OnInit {
 
   messages: any[] = [];
   subscription: Subscription;
+  clickEventsubscription:Subscription;
 
   masterSelected: boolean;
   checklist: any;
@@ -41,8 +42,6 @@ export class OrderBodyTableComponent implements OnInit {
       .getMessage()
       .subscribe((message) => {
         if (message) {
-          this.messages.push(message);
-          console.log(this.messages);
           this.searchText = message.text;
         } else {
           // clear messages when empty message received
@@ -53,6 +52,10 @@ export class OrderBodyTableComponent implements OnInit {
     this.masterSelected = false;
     this.checklist = data;
     this.getCheckedItemList();
+
+    this.clickEventsubscription=    this.dataComService.getClickEvent().subscribe(()=>{
+      this.getCheckedItemList();
+      })
   }
 
   ngOnInit(): void {
@@ -62,6 +65,7 @@ export class OrderBodyTableComponent implements OnInit {
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
+    this.clickEventsubscription.unsubscribe();
   }
 
   // The master checkbox will check/ uncheck all items
@@ -101,6 +105,7 @@ export class OrderBodyTableComponent implements OnInit {
       if (this.checklist[i].isSelected)
         this.checkedList.push(this.checklist[i]);
     }
-    this.checkedList = JSON.stringify(this.checkedList);
+    // this.checkedList = JSON.stringify(this.checkedList);
+    console.log(this.checkedList)
   }
 }

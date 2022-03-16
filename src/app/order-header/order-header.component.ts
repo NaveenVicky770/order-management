@@ -11,21 +11,24 @@ export class OrderHeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onKeyUp(x: any) { // appending the updated value to the variable
-    console.log(x.target.value)
-    let message=(x.target.value)
-    this.sendMessage(message)
+  onKeyUp(x: any) {
+    // appending the updated value to the variable
+    console.log(x.target.value);
+    let message = x.target.value;
+    this.sendMessage(message);
   }
 
   sendMessage(message: string): void {
     // send message to subscribers via observable subject
-    this.dataComService.sendMessage(
-      message
-    );
+    this.dataComService.sendMessage(message);
   }
 
   clearMessages(): void {
     // clear messages
-    this.dataComService.clearMessages("");
-}
+    this.dataComService.clearMessages('');
+  }
+
+  exportToExcelEvent() {
+    this.dataComService.sendClickEvent();
+  }
 }

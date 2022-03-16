@@ -8,6 +8,7 @@ export class DataCommuniationServiceService {
   constructor() {}
 
   private subject = new Subject<any>();
+  private subject2 = new Subject<any>();
 
   sendMessage(message: string) {
     this.subject.next({ text: message });
@@ -19,5 +20,13 @@ export class DataCommuniationServiceService {
 
   getMessage(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+  sendClickEvent() {
+    this.subject2.next({});
+  }
+
+  getClickEvent(): Observable<any> {
+    return this.subject2.asObservable();
   }
 }
