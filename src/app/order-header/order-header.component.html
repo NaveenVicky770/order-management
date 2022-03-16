@@ -10,12 +10,13 @@
         class="search-input"
         placeholder="Search by any parameter . . ."
         (keyup)="onKeyUp($event)"
+        [(ngModel)]="searchText"
       />
     </div>
 
     <div class="status-filter-div">
       <img src="assets/icons/status-icon.png" class="icon" />
-      <select class="filter" name="cars" id="cars" placeholder="Status">
+      <select class="filter" name="cars" id="cars" placeholder="Status" (change)="changeDeliveryStatus($event)">
         <option value="" disabled selected>Status</option>
         <option value="Placed">Placed</option>
         <option value="In Transit">In Transit</option>

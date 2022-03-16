@@ -50,6 +50,8 @@ export class OrderBodyTableComponent implements OnInit {
           // clear messages when empty message received
           this.messages = [];
         }
+        console.log("Delivery Status",message.status)
+        console.log("Search Text",message.text)
       });
 
     this.masterSelected = false;
