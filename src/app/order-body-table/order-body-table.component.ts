@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataCommuniationServiceService } from '../services/data-communiation-service.service';
+import { ExcelServiceService } from '../services/excelService/excel-service.service';
 
 import data from './data';
 
@@ -27,14 +28,17 @@ export class OrderBodyTableComponent implements OnInit {
 
   messages: any[] = [];
   subscription: Subscription;
-  clickEventsubscription:Subscription;
+  clickEventsubscription: Subscription;
 
   masterSelected: boolean;
   checklist: any;
   checkedList: any;
-  noOfChecked=0;
+  noOfChecked = 0;
 
-  constructor(private dataComService: DataCommuniationServiceService) {
+  constructor(
+    private dataComService: DataCommuniationServiceService,
+    private excelService: ExcelServiceService
+  ) {
     this.ordersData = data;
     console.log(this.ordersData);
 
@@ -53,9 +57,11 @@ export class OrderBodyTableComponent implements OnInit {
     this.checklist = data;
     this.getCheckedItemList();
 
-    this.clickEventsubscription=    this.dataComService.getClickEvent().subscribe(()=>{
-      this.getCheckedItemList();
-      })
+    this.clickEventsubscription = this.dataComService
+      .getClickEvent()
+      .subscribe(() => {
+        this.exportToExcel();
+      });
   }
 
   ngOnInit(): void {
@@ -73,27 +79,32 @@ export class OrderBodyTableComponent implements OnInit {
     for (var i = 0; i < this.ordersData.length; i++) {
       this.ordersData[i].isSelected = this.masterSelected;
     }
-    this.masterSelected === true? this.noOfChecked=this.ordersData.length: this.noOfChecked=0;
+    this.masterSelected === true
+      ? (this.noOfChecked = this.ordersData.length)
+      : (this.noOfChecked = 0);
     this.getCheckedItemList();
   }
 
   //Check Only one or More
-  checkUncheckOneOrMore(refId: any, checked: boolean){
-    console.log(refId)
-    checked ? this.noOfChecked+=1: this.noOfChecked-=1;
+  checkUncheckOneOrMore(refId: any, checked: boolean) {
+    console.log(refId);
+    checked ? (this.noOfChecked += 1) : (this.noOfChecked -= 1);
   }
 
   // Check All Checkbox Checked
-  isAllSelected(refId:any, event:any) {
-    console.log(event.target.checked)
-    let checked=(event.target.checked)
+  isAllSelected(refId: any, event: any) {
+    console.log(event.target.checked);
+    let checked = event.target.checked;
     this.masterSelected = this.checklist.every(function (item: any) {
       return item.isSelected == true;
     });
-    if(this.masterSelected==false && this.ordersData.length==this.noOfChecked){
-      this.noOfChecked-=1
-    }else{
-      this.checkUncheckOneOrMore(refId,checked)
+    if (
+      this.masterSelected == false &&
+      this.ordersData.length == this.noOfChecked
+    ) {
+      this.noOfChecked -= 1;
+    } else {
+      this.checkUncheckOneOrMore(refId, checked);
     }
     this.getCheckedItemList();
   }
@@ -106,6 +117,10 @@ export class OrderBodyTableComponent implements OnInit {
         this.checkedList.push(this.checklist[i]);
     }
     // this.checkedList = JSON.stringify(this.checkedList);
-    console.log(this.checkedList)
+    console.log(this.checkedList);
+  }
+
+  exportToExcel() {
+    this.excelService.exportAsExcelFile(this.checkedList, 'Selected_Rows');
   }
 }
