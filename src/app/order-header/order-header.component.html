@@ -6,9 +6,10 @@
     <div class="search-input-div">
       <img src="assets/icons/search-icon.png" class="icon" />
       <input
-        type="search"
+        type="text"
         class="search-input"
         placeholder="Search by any parameter . . ."
+        (keyup)="onKeyUp($event)"
       />
     </div>
 
