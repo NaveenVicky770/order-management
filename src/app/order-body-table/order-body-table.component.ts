@@ -1,19 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 
-import  data from './data'
+import data from './data';
+
+type order = {
+  refId: string;
+  customer: string;
+  product: string;
+  date: string;
+  distribution: string;
+  status: string;
+  price: string;
+};
 
 @Component({
   selector: 'app-order-body-table',
   templateUrl: './order-body-table.component.html',
-  styleUrls: ['./order-body-table.component.css']
+  styleUrls: ['./order-body-table.component.css'],
 })
 export class OrderBodyTableComponent implements OnInit {
-  ordersData=data;
+  searchText: string | undefined;
 
-  constructor() { }
+  ordersData: order[] = [];
 
-  ngOnInit(): void {
-    console.log(this.ordersData)
+  constructor() {
+    this.ordersData = data;
+    console.log(this.ordersData);
   }
 
+  ngOnInit(): void {
+    console.log(this.ordersData);
+  }
 }

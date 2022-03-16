@@ -6,6 +6,8 @@
     <span class="no-of-orders-selected">(2 orders Selected)</span>
   </label>
 
+  <input type="text" [(ngModel)]="searchText"/>
+
   <table class="custom-table">
     <thead class="grey-table-headings">
       <td></td>
@@ -18,7 +20,7 @@
       <td>Price</td>
     </thead>
     <tbody>
-      <tr *ngFor="let order of ordersData">
+      <tr *ngFor="let order of ordersData | searchFilter: searchText">
         <td class="checkbox-column">
           <label class="main">
             <input type="checkbox" />
