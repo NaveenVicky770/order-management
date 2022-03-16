@@ -24,15 +24,17 @@ type order = {
 })
 export class OrderBodyTableComponent implements OnInit {
   searchText: string | undefined;
-  deliveryFilter="";
+  deliveryFilter = '';
+  locationFilter = '';
 
   ordersData: order[] = [];
-  filteredOrders:order[]=ordersData;
+  filteredOrders: order[] = ordersData;
 
   messages: any[] = [];
   subscription: Subscription;
   clickEventsubscription: Subscription;
   deliveryFilterSubscription: Subscription;
+  locationFilterSubscription: Subscription;
 
   masterSelected: boolean;
   checklist: any;
@@ -66,18 +68,31 @@ export class OrderBodyTableComponent implements OnInit {
         this.exportToExcel();
       });
 
-      this.deliveryFilterSubscription = this.dataComService
+    this.deliveryFilterSubscription = this.dataComService
       .getDeliveryStatus()
       .subscribe((status) => {
-        this.deliveryFilter=(status.status)
-        this.filteredOrders=this.ordersData.filter((item)=>{
-          console.log(item.status==this.deliveryFilter)
-          return item.status == this.deliveryFilter
-        })
-        console.log(this.filteredOrders)
+        this.deliveryFilter = status.status;
+        this.filterOrders();
       });
 
+    this.locationFilterSubscription = this.dataComService
+      .getLocationStatus()
+      .subscribe((location) => {
+        this.locationFilter = location.location;
+        this.filterOrders();
+      });
   }
+
+  filterOrders = () => {
+    this.filteredOrders = this.ordersData.filter((item) => {
+      console.log(item.status == this.deliveryFilter);
+      return (
+        (item.status == this.deliveryFilter || this.deliveryFilter=="") &&
+        (item.distribution == this.locationFilter || this.locationFilter == '')
+      );
+    });
+    console.log(this.filteredOrders);
+  };
 
   ngOnInit(): void {}
 

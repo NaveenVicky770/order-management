@@ -8,6 +8,7 @@ import { DataCommuniationServiceService } from '../services/data-communiation-se
 })
 export class OrderHeaderComponent implements OnInit {
   deliveryStatus="";
+  locationStatus="";
   searchText="";
   constructor(private dataComService: DataCommuniationServiceService) {}
 
@@ -36,5 +37,10 @@ export class OrderHeaderComponent implements OnInit {
   changeDeliveryStatus(event:any){
     this.deliveryStatus=(event.target.value);
     this.dataComService.sendDeliveryFilter(this.deliveryStatus);
+  }
+
+  changeLocationStatus(event:any){
+    this.locationStatus=(event.target.value);
+    this.dataComService.sendLocationFilter(this.locationStatus);
   }
 }

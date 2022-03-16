@@ -10,6 +10,7 @@ export class DataCommuniationServiceService {
   private subject = new Subject<any>();
   private subject2 = new Subject<any>();
   private subjectDeliveryStatus = new Subject<any>();
+  private subjectLocationStatus = new Subject<any>();
 
   sendMessage(message: string) {
     this.subject.next({ text: message });
@@ -37,5 +38,13 @@ export class DataCommuniationServiceService {
 
   getDeliveryStatus(): Observable<any>{
     return this.subjectDeliveryStatus.asObservable();
+  }
+
+  sendLocationFilter(locationStatus: string){
+    this.subjectLocationStatus.next({location: locationStatus});
+  }
+
+  getLocationStatus(): Observable<any>{
+    return this.subjectLocationStatus.asObservable();
   }
 }

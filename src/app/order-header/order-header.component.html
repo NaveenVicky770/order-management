@@ -2,7 +2,6 @@
   <h1 class="order-header-heading">Orders</h1>
   <hr class="order-bottom-underline" />
   <div class="search-filters">
-
     <div class="search-input-div">
       <img src="assets/icons/search-icon.png" class="icon" />
       <input
@@ -16,7 +15,13 @@
 
     <div class="status-filter-div">
       <img src="assets/icons/status-icon.png" class="icon" />
-      <select class="filter" name="cars" id="cars" placeholder="Status" (change)="changeDeliveryStatus($event)">
+      <select
+        class="filter"
+        name="cars"
+        id="cars"
+        placeholder="Status"
+        (change)="changeDeliveryStatus($event)"
+      >
         <option value="" disabled selected>Status</option>
         <option value="Placed">Placed</option>
         <option value="In Transit">In Transit</option>
@@ -27,7 +32,13 @@
 
     <div class="status-filter-div">
       <img src="assets/icons/status-icon.png" class="icon" />
-      <select class="filter" name="cars" id="cars" placeholder="Status">
+      <select
+        class="filter"
+        name="cars"
+        id="cars"
+        placeholder="Status"
+        (change)="changeLocationStatus($event)"
+      >
         <option value="" disabled selected>Distribution</option>
         <option value="Bangalore">Bangalore</option>
         <option value="Hyderabad">Hyderabad</option>
