@@ -13,7 +13,6 @@ export class OrderHeaderComponent implements OnInit {
 
   onKeyUp(x: any) {
     // appending the updated value to the variable
-    console.log(x.target.value);
     let message = x.target.value;
     this.sendMessage(message);
   }

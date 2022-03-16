@@ -40,7 +40,6 @@ export class OrderBodyTableComponent implements OnInit {
     private excelService: ExcelServiceService
   ) {
     this.ordersData = data;
-    console.log(this.ordersData);
 
     this.subscription = this.dataComService
       .getMessage()
@@ -64,9 +63,7 @@ export class OrderBodyTableComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    console.log(this.ordersData);
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy() {
     // unsubscribe to ensure no memory leaks
@@ -117,10 +114,13 @@ export class OrderBodyTableComponent implements OnInit {
         this.checkedList.push(this.checklist[i]);
     }
     // this.checkedList = JSON.stringify(this.checkedList);
-    console.log(this.checkedList);
   }
 
   exportToExcel() {
+    if (this.checkedList.length === 0) {
+      alert('Please select some rows to Export');
+      return;
+    }
     this.excelService.exportAsExcelFile(this.checkedList, 'Selected_Rows');
   }
 }
