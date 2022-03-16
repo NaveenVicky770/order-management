@@ -21,7 +21,7 @@ export class OrderHeaderComponent implements OnInit {
 
   sendMessage(message: string): void {
     // send message to subscribers via observable subject
-    this.dataComService.sendMessage(message,this.deliveryStatus);
+    this.dataComService.sendMessage(message);
   }
 
   clearMessages(): void {
@@ -34,8 +34,7 @@ export class OrderHeaderComponent implements OnInit {
   }
 
   changeDeliveryStatus(event:any){
-    this.searchText="";
     this.deliveryStatus=(event.target.value);
-    this.dataComService.sendMessage(this.searchText,this.deliveryStatus);
+    this.dataComService.sendDeliveryFilter(this.deliveryStatus);
   }
 }

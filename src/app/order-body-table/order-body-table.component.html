@@ -18,7 +18,7 @@
       <td>Price</td>
     </thead>
     <tbody>
-      <tr *ngFor="let order of ordersData | searchFilter: searchText">
+      <tr *ngFor="let order of filteredOrders | searchFilter: searchText">
         <td class="checkbox-column">
           <label class="main">
             <input type="checkbox" [(ngModel)]="order.isSelected" (change)="isAllSelected(order.refId, $event)"/>

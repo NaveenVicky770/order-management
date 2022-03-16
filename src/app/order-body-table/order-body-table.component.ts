@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataCommuniationServiceService } from '../services/data-communiation-service.service';
 import { ExcelServiceService } from '../services/excelService/excel-service.service';
+import ordersData from './data';
 
 import data from './data';
 
@@ -23,12 +24,15 @@ type order = {
 })
 export class OrderBodyTableComponent implements OnInit {
   searchText: string | undefined;
+  deliveryFilter="";
 
   ordersData: order[] = [];
+  filteredOrders:order[]=ordersData;
 
   messages: any[] = [];
   subscription: Subscription;
   clickEventsubscription: Subscription;
+  deliveryFilterSubscription: Subscription;
 
   masterSelected: boolean;
   checklist: any;
@@ -50,8 +54,6 @@ export class OrderBodyTableComponent implements OnInit {
           // clear messages when empty message received
           this.messages = [];
         }
-        console.log("Delivery Status",message.status)
-        console.log("Search Text",message.text)
       });
 
     this.masterSelected = false;
@@ -63,6 +65,18 @@ export class OrderBodyTableComponent implements OnInit {
       .subscribe(() => {
         this.exportToExcel();
       });
+
+      this.deliveryFilterSubscription = this.dataComService
+      .getDeliveryStatus()
+      .subscribe((status) => {
+        this.deliveryFilter=(status.status)
+        this.filteredOrders=this.ordersData.filter((item)=>{
+          console.log(item.status==this.deliveryFilter)
+          return item.status == this.deliveryFilter
+        })
+        console.log(this.filteredOrders)
+      });
+
   }
 
   ngOnInit(): void {}

@@ -5,7 +5,7 @@ const ordersData = [
     product: 'Orbea Orco M30',
     date: '08 Aug 2020',
     distribution: 'Bangalore',
-    status: 'In transit',
+    status: 'In Transit',
     price: 'Rs 800.00/-',
     isSelected: false
   },
@@ -15,7 +15,7 @@ const ordersData = [
     product: 'Pinarello Gan Disk (x2)',
     date: '06 Aug 2020',
     distribution: 'Hyderabad',
-    status: 'In transit',
+    status: 'In Transit',
     price: 'Rs. 900.00/-',
     isSelected: false
   },
@@ -35,7 +35,7 @@ const ordersData = [
     product: 'Elite P (x4), Shcm Dire...',
     date: '07 Aug 2020',
     distribution: 'Bangalore',
-    status: 'In transit',
+    status: 'In Transit',
     price: 'Rs 1100.00/-',
     isSelected: false
   },
