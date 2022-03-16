@@ -1,0 +1,38 @@
+<div class="order-page-body">
+  <label class="main"
+    >All Orders
+    <input  type="checkbox" />
+    <span id="check-all-checkbox" class="checkmark"></span>
+    <span class="no-of-orders-selected">(2 orders Selected)</span>
+  </label>
+
+  <table class="custom-table">
+    <thead class="grey-table-headings">
+      <td></td>
+      <td>Ref.ID</td>
+      <td>Customer</td>
+      <td>Product (s)</td>
+      <td>Date</td>
+      <td>Distribution</td>
+      <td>Status</td>
+      <td>Price</td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of ordersData">
+        <td class="checkbox-column">
+          <label class="main">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
+        </td>
+        <td>{{ order.refId }}</td>
+        <td>{{ order.customer }}</td>
+        <td>{{ order.product }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.distribution }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.price }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

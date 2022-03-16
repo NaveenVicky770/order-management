@@ -1,0 +1,75 @@
+.order-header {
+  background: #e5e5e5;
+  padding: 21px 34px 22px 27px;
+}
+
+.order-bottom-underline {
+  border: 2px solid #dddddd;
+}
+
+.order-header-heading {
+  /* font-family: "Poppins"; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.search-input-div {
+  position: absolute;
+  width: 375px;
+  left: 27px;
+
+  background: #ffffff;
+  border: 2px solid #dddddd;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.search-input-div:focus {
+  outline-width: 2px;
+  outline: invert;
+}
+
+.search-input {
+  border: none;
+  width: 300px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.icon {
+  margin: 12.5px 13.5px;
+  width: 20px;
+  height: 20px;
+}
+
+.status-filter-div {
+  width: 255px;
+  background: #ffffff;
+  border: 2px solid #dddddd;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: inline-block;
+  margin-left: 16px;
+}
+
+.filter {
+  width: 190px;
+  border: none;
+}
+
+.export-div{
+  margin-left: auto;
+}
+
+.export-to-excel-btn {
+  background: #17c3b2;
+  border-radius: 25px;
+  width: 255px;
+  color: white;
+  height: 50px;
+  display: inline-block;
+}
