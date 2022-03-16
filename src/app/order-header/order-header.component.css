@@ -15,15 +15,19 @@
   line-height: 36px;
 }
 
-.search-input-div {
-  position: absolute;
-  width: 375px;
-  left: 27px;
+.search-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
+.search-input-div {
+  width: 375px;
   background: #ffffff;
   border: 2px solid #dddddd;
   box-sizing: border-box;
   border-radius: 10px;
+  margin-right: 16px;
 }
 
 .search-input-div:focus {
@@ -53,7 +57,7 @@ input:focus {
   box-sizing: border-box;
   border-radius: 10px;
   display: inline-block;
-  margin-left: 16px;
+  margin-right: 16px;
 }
 
 .filter {
@@ -61,15 +65,15 @@ input:focus {
   border: none;
 }
 
-.export-div{
-  margin-left: auto;
-}
 
 .export-to-excel-btn {
+  margin-left: auto;
   background: #17c3b2;
   border-radius: 25px;
   width: 255px;
   color: white;
   height: 50px;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  /* display: inline-block; */
 }
