@@ -1,21 +1,26 @@
 .dropdown-body {
-  position: absolute;
   display: none;
   overflow: hidden;
   background: white;
   background-color: aqua;
 }
 
+.dropdown-body-active{
+  background: #e5e5e5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .cust-dropdown-item {
   display: block;
-  width: 100%;
-  padding: 0.25rem 1rem;
-  clear: both;
+  padding: 0.5rem 1rem;
   font-weight: 400;
   color: #212529;
-  text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
-  border: 0;
+}
+
+.inside{
+  margin-left: auto;
 }

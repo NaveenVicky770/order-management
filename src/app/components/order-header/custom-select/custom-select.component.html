@@ -3,7 +3,7 @@
   <button class="orange-arrow" type="button" (click)="status = !status">
     {{ selectedOption }}
   </button>
-  <div [ngClass]="status ? 'dropdown-body' : ''">
+  <div [ngClass]="status ? 'dropdown-body' : 'dropdown-body-active'">
     <a (click)="changeOption(selectOf, selectOf)" class="cust-dropdown-item">{{
       selectOf
     }}</a>

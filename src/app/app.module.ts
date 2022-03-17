@@ -8,6 +8,10 @@ import { OrderBodyTableComponent } from './components/order-body-table/order-bod
 import { FormsModule } from '@angular/forms';
 import { CustomSelectComponent } from './components/order-header/custom-select/custom-select.component';
 
+//Toaster
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +19,13 @@ import { CustomSelectComponent } from './components/order-header/custom-select/c
     OrderBodyTableComponent,
     CustomSelectComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

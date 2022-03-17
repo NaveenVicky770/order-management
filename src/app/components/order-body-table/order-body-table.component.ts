@@ -5,6 +5,8 @@ import { ExcelServiceService } from '../../services/excelService/excel-service.s
 import ordersData from '../../Data/jsonData';
 import { order } from '../../models/order';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-order-body-table',
   templateUrl: './order-body-table.component.html',
@@ -30,7 +32,8 @@ export class OrderBodyTableComponent implements OnInit {
 
   constructor(
     private dataComService: DataCommuniationServiceService,
-    private excelService: ExcelServiceService
+    private excelService: ExcelServiceService,
+    private toastr: ToastrService
   ) {
     this.ordersData = ordersData;
     this.filteredOrders = ordersData;
@@ -138,10 +141,18 @@ export class OrderBodyTableComponent implements OnInit {
   exportToExcel() {
     console.log(this.checkedList);
     if (this.checkedList.length === 0) {
-      alert('Please select some rows to Export');
+      this.toastr.error('Please select atleast one row to Export', 'Error', {
+        timeOut: 1500,
+        positionClass: 'toast-bottom-right'
+      });
       return;
     }
     this.excelService.exportAsExcelFile(this.checkedList, 'Selected_Rows');
+    this.toastr.success('Successfully Exported', 'Success', {
+      timeOut: 1500,
+      progressBar: true,
+      positionClass: 'toast-bottom-left'
+    });
   }
 
   //function to filter ordersData based on the search and filters criteria
