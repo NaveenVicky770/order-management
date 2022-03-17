@@ -19,6 +19,7 @@
 .search-filters-container {
   display: flex;
   flex-wrap: nowrap;
+  height: 50px;
 }
 .filter-div {
   background: #ffffff;
@@ -32,13 +33,6 @@
 .status-filter-div {
   width: 255px;
 }
-
-.filter-content {
-  width: 200px;
-  border: none;
-  color: #9c9c9c;
-}
-
 
 .icon {
   margin: 12.5px 13.5px;
@@ -71,7 +65,9 @@ input:focus {
 }
 
 /* custom dropdown icon */
-select {
+.orange-arrow {
+  border: none;
+  width: 200px;
   background: url("../../../assets/icons/drop-down-icon.png") 100% 50% no-repeat
     transparent;
   -webkit-appearance: none;
