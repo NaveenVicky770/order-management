@@ -11,29 +11,31 @@
 }
 
 .order-header-heading {
-  font-weight: 500;
   font-size: 24px;
-  line-height: 36px;
+  color: #000000;
 }
 
-.search-filters {
+/* Search and Dropdown filters styling */
+.search-filters-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
-.search-input-div {
-  width: 375px;
+.filter-div {
   background: #ffffff;
   border: 2px solid #dddddd;
   box-sizing: border-box;
   border-radius: 10px;
   margin-right: 16px;
+  font-size: 16px;
 }
 
-.search-input-div:focus {
-  outline-width: 2px;
-  outline: invert;
+.search-input-div {
+  width: 375px;
+}
+
+.status-filter-div {
+  width: 255px;
 }
 
 .search-input {
@@ -51,29 +53,14 @@ input:focus {
   height: 20px;
 }
 
-.status-filter-div {
-  width: 255px;
-  background: #ffffff;
-  border: 2px solid #dddddd;
-  box-sizing: border-box;
-  border-radius: 10px;
-  display: inline-block;
-  margin-right: 16px;
-  font-size: 16px;
-}
-
-.filter {
+.filter-content {
   width: 200px;
   border: none;
-}
-
-.filter:focus {
-  width: 200px;
-  border: 0px solid black;
-  /* background-color: red; */
+  color: #9c9c9c;
 }
 
 .export-to-excel-btn {
+  font-size: 18px;
   margin-left: auto;
   background: #17c3b2;
   border-radius: 25px;
@@ -82,19 +69,18 @@ input:focus {
   height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  /* display: inline-block; */
 }
 
+/* custom dropdown icon */
 select {
   background: url("../../../assets/icons/drop-down-icon.png") 100% 50% no-repeat
     transparent;
-  /* background-position: top -1px right 0px; */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
+/* to hide deault dropdown arrow */
 select::-ms-expand {
   display: none;
 }

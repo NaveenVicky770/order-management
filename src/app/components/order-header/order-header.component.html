@@ -1,8 +1,9 @@
 <div class="order-header">
   <h1 class="order-header-heading">Orders</h1>
   <hr class="order-bottom-underline" />
-  <div class="search-filters">
-    <div class="search-input-div">
+  <div class="search-filters-container">
+
+    <div class="filter-div search-input-div">
       <img src="assets/icons/search-icon.png" class="icon" />
       <input
         type="text"
@@ -13,10 +14,10 @@
       />
     </div>
 
-    <div class="status-filter-div">
+    <div class="filter-div status-filter-div">
       <img src="assets/icons/status-icon.png" class="icon" />
       <select
-        class="filter"
+        class="filter-content"
         name="cars"
         id="cars"
         placeholder="Status"
@@ -29,10 +30,10 @@
       </select>
     </div>
 
-    <div class="status-filter-div">
+    <div class="filter-div status-filter-div">
       <img src="assets/icons/carbon_location.png" class="icon" />
       <select
-        class="filter"
+        class="filter-content"
         name="cars"
         id="cars"
         placeholder="Status"
@@ -47,7 +48,7 @@
 
     <div class="btn export-to-excel-btn" (click)="exportToExcelEvent()">
       <img class="icon" src="assets/icons/download-icon.png" />
-      <span>Export Orders</span>
+      <span>Export Order(s)</span>
     </div>
   </div>
 </div>
