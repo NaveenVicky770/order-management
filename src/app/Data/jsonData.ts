@@ -7,7 +7,7 @@ const ordersData = [
     distribution: 'Bangalore',
     status: 'In Transit',
     price: 'Rs 800.00/-',
-    isSelected: false
+    isSelected: false,
   },
   {
     refId: '455',
@@ -17,7 +17,7 @@ const ordersData = [
     distribution: 'Hyderabad',
     status: 'In Transit',
     price: 'Rs. 900.00/-',
-    isSelected: false
+    isSelected: false,
   },
   {
     refId: '121',
@@ -27,7 +27,7 @@ const ordersData = [
     distribution: 'Patna',
     status: 'Out for Delivery',
     price: 'Rs 300.00/-',
-    isSelected: false
+    isSelected: false,
   },
   {
     refId: '424',
@@ -37,7 +37,7 @@ const ordersData = [
     distribution: 'Bangalore',
     status: 'In Transit',
     price: 'Rs 1100.00/-',
-    isSelected: false
+    isSelected: false,
   },
   {
     refId: '877',
@@ -47,7 +47,7 @@ const ordersData = [
     distribution: 'Hyderabad',
     status: 'Placed',
     price: 'Rs 600.00/-',
-    isSelected: false
+    isSelected: false,
   },
   {
     refId: '235',
@@ -57,7 +57,7 @@ const ordersData = [
     distribution: 'Patna',
     status: 'Delivered',
     price: 'Rs 1250.00/-',
-    isSelected: false
+    isSelected: false,
   },
   {
     refId: '837',
@@ -67,7 +67,7 @@ const ordersData = [
     distribution: 'Bangalore',
     status: 'Out for Delivery',
     price: 'Rs 850.00/-',
-    isSelected: false
+    isSelected: false,
   },
 ];
 

@@ -28,19 +28,19 @@ export class DataCommuniationServiceService {
     return this.subjectExportBtnClick.asObservable();
   }
 
-  sendDeliveryFilterText(deliveryStatus: string){
+  sendDeliveryFilterText(deliveryStatus: string) {
     this.subjectDeliveryStatus.next(deliveryStatus);
   }
 
-  getDeliveryStatus(): Observable<any>{
+  getDeliveryStatus(): Observable<any> {
     return this.subjectDeliveryStatus.asObservable();
   }
 
-  sendLocationFilterText(locationStatus: string){
+  sendLocationFilterText(locationStatus: string) {
     this.subjectLocationStatus.next(locationStatus);
   }
 
-  getLocationStatus(): Observable<any>{
+  getLocationStatus(): Observable<any> {
     return this.subjectLocationStatus.asObservable();
   }
 }

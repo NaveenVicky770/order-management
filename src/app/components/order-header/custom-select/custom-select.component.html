@@ -1,11 +1,12 @@
 <div class="filter-div status-filter-div">
   <img src="assets/icons/status-icon.png" class="icon" />
   <button class="orange-arrow" type="button" (click)="status = !status">
-    {{selectedOption}}
+    {{ selectedOption }}
   </button>
   <div [ngClass]="status ? 'dropdown-body' : ''">
-
-    <a (click)="changeOption(selectOf, selectOf)" class="cust-dropdown-item">{{selectOf}}</a>
+    <a (click)="changeOption(selectOf, selectOf)" class="cust-dropdown-item">{{
+      selectOf
+    }}</a>
 
     <ng-container *ngFor="let option of currentOptions">
       <a (click)="changeOption(option, selectOf)" class="cust-dropdown-item">{{

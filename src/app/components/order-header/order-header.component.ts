@@ -7,7 +7,6 @@ import { DataCommuniationServiceService } from '../../services/data-communiation
   styleUrls: ['./order-header.component.css'],
 })
 export class OrderHeaderComponent implements OnInit {
-
   searchText = '';
   constructor(private dataComService: DataCommuniationServiceService) {}
 
@@ -25,5 +24,4 @@ export class OrderHeaderComponent implements OnInit {
   exportToExcelEvent() {
     this.dataComService.sendClickEvent();
   }
-
 }

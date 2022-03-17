@@ -129,14 +129,14 @@ export class OrderBodyTableComponent implements OnInit {
   checkUncheckOneOrMore(refId: any, checked: boolean) {
     console.log(refId);
     checked ? (this.noOfChecked += 1) : (this.noOfChecked -= 1);
-    if(this.noOfChecked===this.filteredOrders.length){
-      this.masterSelected=true
+    if (this.noOfChecked === this.filteredOrders.length) {
+      this.masterSelected = true;
     }
   }
 
   // function to export selcted rows as excel
   exportToExcel() {
-    console.log(this.checkedList)
+    console.log(this.checkedList);
     if (this.checkedList.length === 0) {
       alert('Please select some rows to Export');
       return;

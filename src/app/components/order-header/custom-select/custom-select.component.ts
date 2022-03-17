@@ -19,7 +19,7 @@ export class CustomSelectComponent implements OnInit {
   ];
   availableLocations = ['Bangalore', 'Hyderabad', 'Patna'];
   currentOptions: string[] = [];
-  selectedOption='';
+  selectedOption = '';
   status = true;
   constructor(private dataComService: DataCommuniationServiceService) {}
 
@@ -30,14 +30,14 @@ export class CustomSelectComponent implements OnInit {
     if (this.selectOf === 'distribution') {
       this.currentOptions = this.availableLocations;
     }
-    this.selectedOption=this.selectOf
+    this.selectedOption = this.selectOf;
   }
 
   changeOption(option: any, selectOf: any) {
-    this.selectedOption=option
+    this.selectedOption = option;
     this.status = !this.status;
-    if(option===selectOf){
-      option=""
+    if (option === selectOf) {
+      option = '';
     }
     if (selectOf === 'status') {
       this.changeDeliveryStatus(option);

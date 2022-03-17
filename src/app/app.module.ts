@@ -8,20 +8,15 @@ import { OrderBodyTableComponent } from './components/order-body-table/order-bod
 import { FormsModule } from '@angular/forms';
 import { CustomSelectComponent } from './components/order-header/custom-select/custom-select.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     OrderHeaderComponent,
     OrderBodyTableComponent,
-    CustomSelectComponent
+    CustomSelectComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
