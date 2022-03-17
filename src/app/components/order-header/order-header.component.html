@@ -23,10 +23,9 @@
         (change)="changeDeliveryStatus($event)"
       >
         <option value="" selected>Status</option>
-        <option value="Placed">Placed</option>
-        <option value="In Transit">In Transit</option>
-        <option value="Out for Delivery">Out for Delivery</option>
-        <option value="Delivered">Delivered</option>
+        <ng-container *ngFor="let status of availableDeliveryStatuses">
+          <option value="{{ status }}">{{ status }}</option>
+        </ng-container>
       </select>
     </div>
 
@@ -40,9 +39,9 @@
         (change)="changeLocationStatus($event)"
       >
         <option value="" selected>Distribution</option>
-        <option value="Bangalore">Bangalore</option>
-        <option value="Hyderabad">Hyderabad</option>
-        <option value="Patna">Patna</option>
+        <ng-container *ngFor="let location of availableLocations">
+          <option value="{{ location }}">{{ location }}</option>
+        </ng-container>
       </select>
     </div>
 

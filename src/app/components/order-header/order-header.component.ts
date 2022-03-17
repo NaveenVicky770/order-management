@@ -7,6 +7,8 @@ import { DataCommuniationServiceService } from '../../services/data-communiation
   styleUrls: ['./order-header.component.css'],
 })
 export class OrderHeaderComponent implements OnInit {
+  availableDeliveryStatuses = ['Placed','In Transit','Out for Delivery','Delivered']
+  availableLocations=['Bangalore','Hyderabad','Patna']
   deliveryStatus="";
   locationStatus="";
   searchText="";
