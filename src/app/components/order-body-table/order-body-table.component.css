@@ -1,32 +1,30 @@
 .order-page-body {
   padding: 26px 34px 22px 27px;
   font-size: 18px;
-  font-style: normal;
-  line-height: 27px;
   color: #6c6c6c;
 }
 
-.custom-table {
-  width: 100%;
-  display: table;
+.no-of-orders-selected {
+  color: #17c3b2;
 }
 
-.grey-table-headings {
-  background: #f4f4f4;
+/* Custom Table Styling */
+
+.custom-table {
+  width: 100%;
+}
+
+tr {
+  border-radius: 10px;
   height: 63px;
-  font-weight: normal;
 }
 
 tr:nth-child(even) {
-  background: #f4f4f4;
-  border-radius: 10px;
-  height: 63px;
+  background: white;
 }
 
 tr:nth-child(odd) {
-  background: white;
-  border-radius: 10px;
-  height: 63px;
+  background: #f4f4f4;
 }
 
 td:first-child,
@@ -38,29 +36,25 @@ th:last-child {
   border-radius: 0 10px 10px 0;
 }
 
+/* End of Table styling */
+
 .checkbox-column {
   width: 55px;
   text-align: center;
 }
 
-.no-of-orders-selected {
-  color: #17c3b2;
-}
-
 /* CheckBox Styling */
-
-.main {
-  display: block;
-  position: relative;
-  padding-left: 45px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  font-size: 20px;
-}
 
 /* Hide the default checkbox */
 input[type="checkbox"] {
   visibility: hidden;
+}
+
+.checkbox-div {
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 
 /* Creating a custom checkbox
@@ -69,27 +63,12 @@ based on demand */
   position: absolute;
   top: 10px;
   left: 15.5px;
-  height: 25px;
-  width: 25px;
-  background-color: transparent;
+  height: 22px;
+  width: 22px;
   background: url("../../../assets/icons/Vector.png") 0 0 no-repeat;
 }
 
-/* Specify the background color to be
-shown when hovering over checkbox */
-.main:hover input ~ .checkmark {
-  /* background-color: #ccc; */
-}
-
-/* Specify the background color to be
-shown when checkbox is active */
-.main input:active ~ .checkmark {
-  background-color: #ff6b6b;
-}
-
-/* Specify the background color to be
-shown when checkbox is checked */
-.main input:checked ~ .checkmark {
+.checkbox-div input:checked ~ .checkmark {
   background-color: #ff6b6b;
 }
 
@@ -102,7 +81,7 @@ shown when checkbox is checked */
 }
 
 /* Display checkmark when checked */
-.main input:checked ~ .checkmark:after {
+.checkbox-div input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -110,7 +89,7 @@ shown when checkbox is checked */
 /* Rotated the rectangle by 45 degree and
 showing only two border to make it look
 like a tickmark */
-.main .checkmark:after {
+.checkbox-div .checkmark:after {
   left: 8px;
   bottom: 5px;
   width: 6px;
@@ -126,3 +105,5 @@ like a tickmark */
   position: absolute;
   top: 3px;
 }
+
+/* End of Checkbox div and checkmark Styling */

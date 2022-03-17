@@ -1,13 +1,19 @@
 <div class="order-page-body">
-  <label class="main"
+  <label class="checkbox-div"
     >All Orders
-    <input  type="checkbox" [(ngModel)]="masterSelected" (change)="checkUncheckAll()" />
+    <input
+      type="checkbox"
+      [(ngModel)]="masterSelected"
+      (change)="checkUncheckAll()"
+    />
     <span id="check-all-checkbox" class="checkmark"></span>
-    <span class="no-of-orders-selected">({{noOfChecked}} orders Selected)</span>
+    <span class="no-of-orders-selected"
+      >({{ noOfChecked }} orders Selected)</span
+    >
   </label>
 
   <table class="custom-table">
-    <thead class="grey-table-headings">
+    <tr>
       <td></td>
       <td>Ref.ID</td>
       <td>Customer</td>
@@ -16,12 +22,16 @@
       <td>Distribution</td>
       <td>Status</td>
       <td>Price</td>
-    </thead>
-    <tbody>
+    </tr>
+    <ng-container>
       <tr *ngFor="let order of filteredOrders | searchFilter: searchText">
         <td class="checkbox-column">
-          <label class="main">
-            <input type="checkbox" [(ngModel)]="order.isSelected" (change)="isAllSelected(order.refId, $event)"/>
+          <label class="checkbox-div">
+            <input
+              type="checkbox"
+              [(ngModel)]="order.isSelected"
+              (change)="isAllSelected(order.refId, $event)"
+            />
             <span class="checkmark"></span>
           </label>
         </td>
@@ -32,7 +42,7 @@
         <td>{{ order.distribution }}</td>
         <td>{{ order.status }}</td>
         <td>{{ order.price }}</td>
-      </tr>
-    </tbody>
+      </tr></ng-container
+    >
   </table>
 </div>
