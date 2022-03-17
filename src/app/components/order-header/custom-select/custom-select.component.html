@@ -1,0 +1,14 @@
+<div class="filter-div status-filter-div">
+  <img src="assets/icons/status-icon.png" class="icon" />
+  <select
+    class="filter-content"
+    name="cars"
+    id="cars"
+    (change)="changeOption($event, selectOf)"
+  >
+    <option value="" selected>{{selectOf}}</option>
+    <ng-container *ngFor="let option of currentOptions">
+      <option value="{{ option }}">{{ option }}</option>
+    </ng-container>
+  </select>
+</div>

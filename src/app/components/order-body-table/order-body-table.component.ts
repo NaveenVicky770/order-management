@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataCommuniationServiceService } from '../../services/data-communiation-service.service';
 import { ExcelServiceService } from '../../services/excelService/excel-service.service';
-import ordersData from './data';
+import ordersData from '../../Data/jsonData';
 import { order } from '../../models/order';
 
 @Component({

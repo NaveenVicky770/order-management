@@ -7,6 +7,7 @@ import { OrderHeaderComponent } from './components/order-header/order-header.com
 import { OrderBodyTableComponent } from './components/order-body-table/order-body-table.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { FormsModule } from '@angular/forms';
+import { CustomSelectComponent } from './components/order-header/custom-select/custom-select.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     OrderHeaderComponent,
     OrderBodyTableComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    CustomSelectComponent
   ],
   imports: [
     BrowserModule,

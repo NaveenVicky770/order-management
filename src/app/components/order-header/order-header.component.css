@@ -20,7 +20,6 @@
   display: flex;
   flex-wrap: nowrap;
 }
-
 .filter-div {
   background: #ffffff;
   border: 2px solid #dddddd;
@@ -30,12 +29,25 @@
   font-size: 16px;
 }
 
-.search-input-div {
-  width: 375px;
-}
-
 .status-filter-div {
   width: 255px;
+}
+
+.filter-content {
+  width: 200px;
+  border: none;
+  color: #9c9c9c;
+}
+
+
+.icon {
+  margin: 12.5px 13.5px;
+  width: 20px;
+  height: 20px;
+}
+
+.search-input-div {
+  width: 375px;
 }
 
 .search-input {
@@ -46,19 +58,6 @@
 input:focus {
   outline: none;
 }
-
-.icon {
-  margin: 12.5px 13.5px;
-  width: 20px;
-  height: 20px;
-}
-
-.filter-content {
-  width: 200px;
-  border: none;
-  color: #9c9c9c;
-}
-
 .export-to-excel-btn {
   font-size: 18px;
   margin-left: auto;
@@ -78,9 +77,4 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-
-/* to hide deault dropdown arrow */
-select::-ms-expand {
-  display: none;
 }

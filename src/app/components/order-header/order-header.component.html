@@ -14,41 +14,14 @@
       />
     </div>
 
-    <div class="filter-div status-filter-div">
-      <img src="assets/icons/status-icon.png" class="icon" />
-      <select
-        class="filter-content"
-        name="cars"
-        id="cars"
-        placeholder="Status"
-        (change)="changeDeliveryStatus($event)"
-      >
-        <option value="" selected>Status</option>
-        <ng-container *ngFor="let status of availableDeliveryStatuses">
-          <option value="{{ status }}">{{ status }}</option>
-        </ng-container>
-      </select>
-    </div>
+    <app-custom-select [selectOf]="'status'"></app-custom-select>
 
-    <div class="filter-div status-filter-div">
-      <img src="assets/icons/carbon_location.png" class="icon" />
-      <select
-        class="filter-content"
-        name="cars"
-        id="cars"
-        placeholder="Status"
-        (change)="changeLocationStatus($event)"
-      >
-        <option value="" selected>Distribution</option>
-        <ng-container *ngFor="let location of availableLocations">
-          <option value="{{ location }}">{{ location }}</option>
-        </ng-container>
-      </select>
-    </div>
+    <app-custom-select [selectOf]="'distribution'"></app-custom-select>
 
     <div class="btn export-to-excel-btn" (click)="exportToExcelEvent()">
       <img class="icon" src="assets/icons/download-icon.png" />
       <span>Export Order(s)</span>
     </div>
+
   </div>
 </div>

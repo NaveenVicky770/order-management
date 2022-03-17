@@ -7,15 +7,7 @@ import { DataCommuniationServiceService } from '../../services/data-communiation
   styleUrls: ['./order-header.component.css'],
 })
 export class OrderHeaderComponent implements OnInit {
-  availableDeliveryStatuses = [
-    'Placed',
-    'In Transit',
-    'Out for Delivery',
-    'Delivered',
-  ];
-  availableLocations = ['Bangalore', 'Hyderabad', 'Patna'];
-  deliveryStatus = '';
-  locationStatus = '';
+
   searchText = '';
   constructor(private dataComService: DataCommuniationServiceService) {}
 
@@ -34,13 +26,4 @@ export class OrderHeaderComponent implements OnInit {
     this.dataComService.sendClickEvent();
   }
 
-  changeDeliveryStatus(event: any) {
-    this.deliveryStatus = event.target.value;
-    this.dataComService.sendDeliveryFilterText(this.deliveryStatus);
-  }
-
-  changeLocationStatus(event: any) {
-    this.locationStatus = event.target.value;
-    this.dataComService.sendLocationFilterText(this.locationStatus);
-  }
 }
