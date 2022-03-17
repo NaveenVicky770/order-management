@@ -7,42 +7,40 @@ import { DataCommuniationServiceService } from '../../services/data-communiation
   styleUrls: ['./order-header.component.css'],
 })
 export class OrderHeaderComponent implements OnInit {
-  availableDeliveryStatuses = ['Placed','In Transit','Out for Delivery','Delivered']
-  availableLocations=['Bangalore','Hyderabad','Patna']
-  deliveryStatus="";
-  locationStatus="";
-  searchText="";
+  availableDeliveryStatuses = [
+    'Placed',
+    'In Transit',
+    'Out for Delivery',
+    'Delivered',
+  ];
+  availableLocations = ['Bangalore', 'Hyderabad', 'Patna'];
+  deliveryStatus = '';
+  locationStatus = '';
+  searchText = '';
   constructor(private dataComService: DataCommuniationServiceService) {}
 
   ngOnInit(): void {}
 
   onKeyUp(x: any) {
-    // appending the updated value to the variable
     this.searchText = x.target.value;
-    this.sendMessage(this.searchText);
+    this.sendSearchText(this.searchText);
   }
 
-  sendMessage(message: string): void {
-    // send message to subscribers via observable subject
-    this.dataComService.sendMessage(message);
-  }
-
-  clearMessages(): void {
-    // clear messages
-    this.dataComService.clearMessages('');
+  sendSearchText(searchText: string): void {
+    this.dataComService.sendSearchText(searchText);
   }
 
   exportToExcelEvent() {
     this.dataComService.sendClickEvent();
   }
 
-  changeDeliveryStatus(event:any){
-    this.deliveryStatus=(event.target.value);
-    this.dataComService.sendDeliveryFilter(this.deliveryStatus);
+  changeDeliveryStatus(event: any) {
+    this.deliveryStatus = event.target.value;
+    this.dataComService.sendDeliveryFilterText(this.deliveryStatus);
   }
 
-  changeLocationStatus(event:any){
-    this.locationStatus=(event.target.value);
-    this.dataComService.sendLocationFilter(this.locationStatus);
+  changeLocationStatus(event: any) {
+    this.locationStatus = event.target.value;
+    this.dataComService.sendLocationFilterText(this.locationStatus);
   }
 }

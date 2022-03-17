@@ -11,15 +11,14 @@ import { order } from '../../models/order';
   styleUrls: ['./order-body-table.component.css'],
 })
 export class OrderBodyTableComponent implements OnInit {
-  searchText: string | undefined;
+  searchText='';
   deliveryFilter = '';
   locationFilter = '';
 
   ordersData: order[] = [];
-  filteredOrders: order[] = ordersData;
+  filteredOrders: order[] = [];
 
-  messages: any[] = [];
-  subscription: Subscription;
+  searchSubscription: Subscription;
   clickEventsubscription: Subscription;
   deliveryFilterSubscription: Subscription;
   locationFilterSubscription: Subscription;
@@ -34,59 +33,47 @@ export class OrderBodyTableComponent implements OnInit {
     private excelService: ExcelServiceService
   ) {
     this.ordersData = ordersData;
-
-    this.subscription = this.dataComService
-      .getMessage()
-      .subscribe((message) => {
-        if (message) {
-          this.searchText = message.text;
-        } else {
-          // clear messages when empty message received
-          this.messages = [];
-        }
-      });
-
+    this.filteredOrders = ordersData;
     this.masterSelected = false;
     this.checklist = ordersData;
     this.getCheckedItemList();
+
+    //Subscriptions to Observables in order OrderHeaderComponent
+
+    this.searchSubscription = this.dataComService
+      .getSearchText()
+      .subscribe((searchText) => {
+        this.searchText = searchText;
+      });
+
+    this.deliveryFilterSubscription = this.dataComService
+      .getDeliveryStatus()
+      .subscribe((deliveryStatus) => {
+        this.deliveryFilter = deliveryStatus;
+        this.filterOrders();
+      });
+
+    this.locationFilterSubscription = this.dataComService
+      .getLocationStatus()
+      .subscribe((locationStatus) => {
+        this.locationFilter = locationStatus;
+        this.filterOrders();
+      });
 
     this.clickEventsubscription = this.dataComService
       .getClickEvent()
       .subscribe(() => {
         this.exportToExcel();
       });
-
-    this.deliveryFilterSubscription = this.dataComService
-      .getDeliveryStatus()
-      .subscribe((status) => {
-        this.deliveryFilter = status.status;
-        this.filterOrders();
-      });
-
-    this.locationFilterSubscription = this.dataComService
-      .getLocationStatus()
-      .subscribe((location) => {
-        this.locationFilter = location.location;
-        this.filterOrders();
-      });
   }
-
-  filterOrders = () => {
-    this.filteredOrders = this.ordersData.filter((item) => {
-      console.log(item.status == this.deliveryFilter);
-      return (
-        (item.status == this.deliveryFilter || this.deliveryFilter=="") &&
-        (item.distribution == this.locationFilter || this.locationFilter == '')
-      );
-    });
-    console.log(this.filteredOrders);
-  };
 
   ngOnInit(): void {}
 
   ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
+    // unsubscribing to ensure no memory leaks
+    this.searchSubscription.unsubscribe();
+    this.deliveryFilterSubscription.unsubscribe();
+    this.locationFilterSubscription.unsubscribe();
     this.clickEventsubscription.unsubscribe();
   }
 
@@ -142,4 +129,15 @@ export class OrderBodyTableComponent implements OnInit {
     }
     this.excelService.exportAsExcelFile(this.checkedList, 'Selected_Rows');
   }
+
+  filterOrders = () => {
+    this.filteredOrders = this.ordersData.filter((item) => {
+      console.log(item.status == this.deliveryFilter);
+      return (
+        (item.status == this.deliveryFilter || this.deliveryFilter == '') &&
+        (item.distribution == this.locationFilter || this.locationFilter == '')
+      );
+    });
+    console.log(this.filteredOrders);
+  };
 }

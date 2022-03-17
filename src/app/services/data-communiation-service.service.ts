@@ -7,41 +7,37 @@ import { Observable, Subject } from 'rxjs';
 export class DataCommuniationServiceService {
   constructor() {}
 
-  private subject = new Subject<any>();
-  private subject2 = new Subject<any>();
+  private subjectSearchText = new Subject<any>();
+  private subjectExportBtnClick = new Subject<any>();
   private subjectDeliveryStatus = new Subject<any>();
   private subjectLocationStatus = new Subject<any>();
 
-  sendMessage(message: string) {
-    this.subject.next({ text: message });
+  sendSearchText(searchText: string) {
+    this.subjectSearchText.next(searchText);
   }
 
-  clearMessages(some: any) {
-    this.subject.next(some);
-  }
-
-  getMessage(): Observable<any> {
-    return this.subject.asObservable();
+  getSearchText(): Observable<any> {
+    return this.subjectSearchText.asObservable();
   }
 
   sendClickEvent() {
-    this.subject2.next({});
+    this.subjectExportBtnClick.next({});
   }
 
   getClickEvent(): Observable<any> {
-    return this.subject2.asObservable();
+    return this.subjectExportBtnClick.asObservable();
   }
 
-  sendDeliveryFilter(deliveryStatus: string){
-    this.subjectDeliveryStatus.next({status: deliveryStatus});
+  sendDeliveryFilterText(deliveryStatus: string){
+    this.subjectDeliveryStatus.next(deliveryStatus);
   }
 
   getDeliveryStatus(): Observable<any>{
     return this.subjectDeliveryStatus.asObservable();
   }
 
-  sendLocationFilter(locationStatus: string){
-    this.subjectLocationStatus.next({location: locationStatus});
+  sendLocationFilterText(locationStatus: string){
+    this.subjectLocationStatus.next(locationStatus);
   }
 
   getLocationStatus(): Observable<any>{
