@@ -11,7 +11,7 @@ import { order } from '../../models/order';
   styleUrls: ['./order-body-table.component.css'],
 })
 export class OrderBodyTableComponent implements OnInit {
-  searchText='';
+  searchText = '';
   deliveryFilter = '';
   locationFilter = '';
 
@@ -50,6 +50,7 @@ export class OrderBodyTableComponent implements OnInit {
       .getDeliveryStatus()
       .subscribe((deliveryStatus) => {
         this.deliveryFilter = deliveryStatus;
+        this.resetStatus()
         this.filterOrders();
       });
 
@@ -57,6 +58,7 @@ export class OrderBodyTableComponent implements OnInit {
       .getLocationStatus()
       .subscribe((locationStatus) => {
         this.locationFilter = locationStatus;
+        this.resetStatus();
         this.filterOrders();
       });
 
@@ -86,6 +88,12 @@ export class OrderBodyTableComponent implements OnInit {
       ? (this.noOfChecked = this.filteredOrders.length)
       : (this.noOfChecked = 0);
     this.getCheckedItemList();
+  }
+
+  resetStatus(){
+    this.filteredOrders=ordersData;
+    this.masterSelected=false;
+    this.checkUncheckAll()
   }
 
   //Check Only one or More
