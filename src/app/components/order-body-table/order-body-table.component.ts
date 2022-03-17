@@ -81,6 +81,15 @@ export class OrderBodyTableComponent implements OnInit {
     this.clickEventsubscription.unsubscribe();
   }
 
+  // Get List of Checked Items
+  getCheckedItemList() {
+    this.checkedList = [];
+    for (var i = 0; i < this.filteredOrders.length; i++) {
+      if (this.filteredOrders[i].isSelected)
+        this.checkedList.push(this.filteredOrders[i]);
+    }
+  }
+
   // The master checkbox will check/ uncheck all items
   checkUncheckAll() {
     for (var i = 0; i < this.filteredOrders.length; i++) {
@@ -96,12 +105,6 @@ export class OrderBodyTableComponent implements OnInit {
     this.filteredOrders = ordersData;
     this.masterSelected = false;
     this.checkUncheckAll();
-  }
-
-  //Check Only one or More
-  checkUncheckOneOrMore(refId: any, checked: boolean) {
-    console.log(refId);
-    checked ? (this.noOfChecked += 1) : (this.noOfChecked -= 1);
   }
 
   // Check All Checkbox Checked
@@ -122,17 +125,18 @@ export class OrderBodyTableComponent implements OnInit {
     this.getCheckedItemList();
   }
 
-  // Get List of Checked Items
-  getCheckedItemList() {
-    this.checkedList = [];
-    for (var i = 0; i < this.checklist.length; i++) {
-      if (this.checklist[i].isSelected)
-        this.checkedList.push(this.checklist[i]);
+  //Check Only one or More
+  checkUncheckOneOrMore(refId: any, checked: boolean) {
+    console.log(refId);
+    checked ? (this.noOfChecked += 1) : (this.noOfChecked -= 1);
+    if(this.noOfChecked===this.filteredOrders.length){
+      this.masterSelected=true
     }
-    // this.checkedList = JSON.stringify(this.checkedList);
   }
 
+  // function to export selcted rows as excel
   exportToExcel() {
+    console.log(this.checkedList)
     if (this.checkedList.length === 0) {
       alert('Please select some rows to Export');
       return;
@@ -140,6 +144,7 @@ export class OrderBodyTableComponent implements OnInit {
     this.excelService.exportAsExcelFile(this.checkedList, 'Selected_Rows');
   }
 
+  //function to filter ordersData based on the search and filters criteria
   filterOrders = () => {
     this.filteredOrders = this.ordersData.filter((item) => {
       return (
