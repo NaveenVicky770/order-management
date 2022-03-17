@@ -2,6 +2,8 @@
   background: #e5e5e5;
   padding: 21px 34px 22px 27px;
   font-size: 16px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
 
 .order-bottom-underline {
@@ -85,7 +87,7 @@ input:focus {
 }
 
 select {
-  background: url("../../assets/icons/drop-down-icon.png") 100% 50% no-repeat
+  background: url("../../../assets/icons/drop-down-icon.png") 100% 50% no-repeat
     transparent;
   /* background-position: top -1px right 0px; */
   -webkit-appearance: none;

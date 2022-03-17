@@ -1,21 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { DataCommuniationServiceService } from '../services/data-communiation-service.service';
-import { ExcelServiceService } from '../services/excelService/excel-service.service';
+import { DataCommuniationServiceService } from '../../services/data-communiation-service.service';
+import { ExcelServiceService } from '../../services/excelService/excel-service.service';
 import ordersData from './data';
-
-import data from './data';
-
-type order = {
-  refId: string;
-  customer: string;
-  product: string;
-  date: string;
-  distribution: string;
-  status: string;
-  price: string;
-  isSelected: boolean;
-};
+import { order } from '../../models/order';
 
 @Component({
   selector: 'app-order-body-table',
@@ -45,7 +33,7 @@ export class OrderBodyTableComponent implements OnInit {
     private dataComService: DataCommuniationServiceService,
     private excelService: ExcelServiceService
   ) {
-    this.ordersData = data;
+    this.ordersData = ordersData;
 
     this.subscription = this.dataComService
       .getMessage()
@@ -59,7 +47,7 @@ export class OrderBodyTableComponent implements OnInit {
       });
 
     this.masterSelected = false;
-    this.checklist = data;
+    this.checklist = ordersData;
     this.getCheckedItemList();
 
     this.clickEventsubscription = this.dataComService
@@ -104,11 +92,11 @@ export class OrderBodyTableComponent implements OnInit {
 
   // The master checkbox will check/ uncheck all items
   checkUncheckAll() {
-    for (var i = 0; i < this.ordersData.length; i++) {
-      this.ordersData[i].isSelected = this.masterSelected;
+    for (var i = 0; i < this.filteredOrders.length; i++) {
+      this.filteredOrders[i].isSelected = this.masterSelected;
     }
     this.masterSelected === true
-      ? (this.noOfChecked = this.ordersData.length)
+      ? (this.noOfChecked = this.filteredOrders.length)
       : (this.noOfChecked = 0);
     this.getCheckedItemList();
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataCommuniationServiceService } from '../services/data-communiation-service.service';
+import { DataCommuniationServiceService } from '../../services/data-communiation-service.service';
 
 @Component({
   selector: 'app-order-header',
