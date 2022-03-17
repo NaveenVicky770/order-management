@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrderHeaderComponent } from './components/order-header/order-header.component';
 import { OrderBodyTableComponent } from './components/order-body-table/order-body-table.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { CustomSelectComponent } from './components/order-header/custom-select/custom-select.component';
 
@@ -15,7 +14,6 @@ import { CustomSelectComponent } from './components/order-header/custom-select/c
     AppComponent,
     OrderHeaderComponent,
     OrderBodyTableComponent,
-    SearchFilterPipe,
     CustomSelectComponent
   ],
   imports: [

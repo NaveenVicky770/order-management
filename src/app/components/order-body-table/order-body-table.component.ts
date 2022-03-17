@@ -44,13 +44,15 @@ export class OrderBodyTableComponent implements OnInit {
       .getSearchText()
       .subscribe((searchText) => {
         this.searchText = searchText;
+        this.resetStatus();
+        this.filterOrders();
       });
 
     this.deliveryFilterSubscription = this.dataComService
       .getDeliveryStatus()
       .subscribe((deliveryStatus) => {
         this.deliveryFilter = deliveryStatus;
-        this.resetStatus()
+        this.resetStatus();
         this.filterOrders();
       });
 
@@ -90,10 +92,10 @@ export class OrderBodyTableComponent implements OnInit {
     this.getCheckedItemList();
   }
 
-  resetStatus(){
-    this.filteredOrders=ordersData;
-    this.masterSelected=false;
-    this.checkUncheckAll()
+  resetStatus() {
+    this.filteredOrders = ordersData;
+    this.masterSelected = false;
+    this.checkUncheckAll();
   }
 
   //Check Only one or More
@@ -140,10 +142,11 @@ export class OrderBodyTableComponent implements OnInit {
 
   filterOrders = () => {
     this.filteredOrders = this.ordersData.filter((item) => {
-      console.log(item.status == this.deliveryFilter);
       return (
         (item.status == this.deliveryFilter || this.deliveryFilter == '') &&
-        (item.distribution == this.locationFilter || this.locationFilter == '')
+        (item.distribution == this.locationFilter ||
+          this.locationFilter == '') &&
+        JSON.stringify(item).toLowerCase().includes(this.searchText)
       );
     });
     console.log(this.filteredOrders);
