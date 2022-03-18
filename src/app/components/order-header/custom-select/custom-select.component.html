@@ -1,17 +1,23 @@
 <div class="filter-div status-filter-div">
   <img src="assets/icons/status-icon.png" class="icon" />
-  <button class="orange-arrow" type="button" (click)="status = !status">
+  <button class="orange-arrow" type="button" (click)="changeDropDownStatus()">
     {{ selectedOption }}
   </button>
-  <div [ngClass]="status ? 'dropdown-body' : 'dropdown-body-active'">
-    <a (click)="changeOption(selectOf, selectOf)" class="cust-dropdown-item">{{
-      selectOf
-    }}</a>
+  <ng-container *ngIf="status">
+    <div class="dropdown-body dropdown-body-active">
+      <a
+        (click)="changeOption(selectOf, selectOf)"
+        class="cust-dropdown-item"
+        >{{ selectOf }}</a
+      >
 
-    <ng-container *ngFor="let option of currentOptions">
-      <a (click)="changeOption(option, selectOf)" class="cust-dropdown-item">{{
-        option
-      }}</a>
-    </ng-container>
-  </div>
+      <ng-container *ngFor="let option of currentOptions">
+        <a
+          (click)="changeOption(option, selectOf)"
+          class="cust-dropdown-item"
+          >{{ option }}</a
+        >
+      </ng-container>
+    </div>
+  </ng-container>
 </div>

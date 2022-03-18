@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { DataCommuniationServiceService } from 'src/app/services/data-communiation-service.service';
 
 @Component({
@@ -20,8 +21,20 @@ export class CustomSelectComponent implements OnInit {
   availableLocations = ['Bangalore', 'Hyderabad', 'Patna'];
   currentOptions: string[] = [];
   selectedOption = '';
-  status = true;
-  constructor(private dataComService: DataCommuniationServiceService) {}
+  status = false;
+  dropDownSubscription: Subscription;
+  constructor(private dataComService: DataCommuniationServiceService) {
+    this.dropDownSubscription = this.dataComService
+      .getDropDownStatus()
+      .subscribe((menuStatus) => {
+        console.log(menuStatus);
+        if (menuStatus.selectedMenu === this.selectOf) {
+          return;
+        } else {
+          this.status = false;
+        }
+      });
+  }
 
   ngOnInit(): void {
     if (this.selectOf === 'status') {
@@ -31,6 +44,14 @@ export class CustomSelectComponent implements OnInit {
       this.currentOptions = this.availableLocations;
     }
     this.selectedOption = this.selectOf;
+  }
+
+  changeDropDownStatus() {
+    this.status = !this.status;
+    this.dataComService.sendDropDownStatus({
+      selectedMenu: this.selectOf,
+      status: !this.status,
+    });
   }
 
   changeOption(option: any, selectOf: any) {

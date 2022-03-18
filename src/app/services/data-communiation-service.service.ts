@@ -11,6 +11,7 @@ export class DataCommuniationServiceService {
   private subjectExportBtnClick = new Subject<any>();
   private subjectDeliveryStatus = new Subject<any>();
   private subjectLocationStatus = new Subject<any>();
+  private subjectDropDownStatus = new Subject<any>();
 
   sendSearchText(searchText: string) {
     this.subjectSearchText.next(searchText);
@@ -42,5 +43,13 @@ export class DataCommuniationServiceService {
 
   getLocationStatus(): Observable<any> {
     return this.subjectLocationStatus.asObservable();
+  }
+
+  sendDropDownStatus(menuStatus: {}) {
+    this.subjectDropDownStatus.next(menuStatus);
+  }
+
+  getDropDownStatus(): Observable<any> {
+    return this.subjectDropDownStatus.asObservable();
   }
 }
